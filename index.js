@@ -25,7 +25,7 @@ app.use(
 app.get("/", (req, res) => {
   res.send("this is jem's server");
 });
-const DATABASE_URL = ` mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.fdjas.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+const DATABASE_URL = ` mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.fdjas.mongodb.net/jem'sdb?retryWrites=true&w=majority`;
 
 mongoose
   .connect(DATABASE_URL)
