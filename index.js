@@ -6,7 +6,7 @@ const graphqlSchema = require("./graphql/Schema");
 const graphqlResolvers = require("./graphql/resolver/resolvers");
 
 const productRouter = require("./router/productRouter");
-const port = 4000 || process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 const cors = require("cors");
 
@@ -36,4 +36,4 @@ mongoose
     console.log(err);
   });
 app.use("/product", productRouter);
-app.listen(port, () => console.log("listening   4000"));
+app.listen(PORT, () => console.log(PORT));
