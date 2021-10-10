@@ -5,6 +5,7 @@ const graphqlResolvers = {
   products: async () => {
     try {
       const products = await Product.find();
+
       return products.map((pd) => {
         return transformProduct(pd);
       });

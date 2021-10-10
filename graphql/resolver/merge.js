@@ -51,11 +51,15 @@ const { dateToString } = require("../../helpers/date");
 // };
 
 const transformProduct = (product) => {
-  return {
+  // console.log("product-doc", product._doc);
+
+  const newPd = {
     ...product._doc,
     _id: product.id,
     date: dateToString(product._doc.date),
   };
+
+  return newPd;
 };
 
 // const transformBooking = (booking) => {
