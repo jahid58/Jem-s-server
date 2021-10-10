@@ -14,7 +14,7 @@ module.exports = buildSchema(
         description:String!
         img:String! 
         price:Float! 
-        date:String!
+
 
     }
     input ProductInput {
@@ -28,7 +28,7 @@ module.exports = buildSchema(
         brand:String! 
         description:String!
         img:String! 
-        date:String!
+   
         price:Float! 
 
     }

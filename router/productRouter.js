@@ -15,7 +15,7 @@ router.post("/", (req, res) => {
     color: req.body.color,
     brand: req.body.brand,
     img: req.body.img,
-    date: req.body.date,
+
     department: req.body.department,
     size: req.body.size,
   });

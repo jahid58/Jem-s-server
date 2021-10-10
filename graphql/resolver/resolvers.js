@@ -14,10 +14,11 @@ const graphqlResolvers = {
     }
   },
   createProduct: async (args, req) => {
+    console.log(args);
     const product = new Product({
       title: args.productInput.title,
       name: args.productInput.name,
-      date: new Date(args.productInput.date),
+      date: new Date(),
       size: args.productInput.size,
       category: args.productInput.category,
       price: +args.productInput.price,
@@ -29,7 +30,7 @@ const graphqlResolvers = {
     });
     try {
       let result = await product.save();
-
+      console.log(result);
       return result;
     } catch (err) {
       console.log(err);

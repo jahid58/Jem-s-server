@@ -34,4 +34,4 @@ mongoose
     console.log(err);
   });
 app.use("/product", productRouter);
-app.listen(4000, () => console.log("listening   4000"));
+app.listen(port, () => console.log("listening   4000"));
