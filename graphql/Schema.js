@@ -8,6 +8,7 @@ module.exports = buildSchema(
         name:String!
         title:String!
         category:String!
+        rating:Float!
         department:String! 
         size:String! 
         color:String!
@@ -22,6 +23,7 @@ module.exports = buildSchema(
         date: String!
         name:String!
         title:String!
+        rating:Float!
         category:String!
         department:String! 
         size:String! 
