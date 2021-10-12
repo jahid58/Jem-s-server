@@ -3,7 +3,8 @@ const { buildSchema } = require("graphql");
 module.exports = buildSchema(
   `
   type Product {
-   
+    _id: ID!
+      date:String!
         name:String!
         title:String!
         category:String!
@@ -18,7 +19,7 @@ module.exports = buildSchema(
 
     }
     input ProductInput {
-        
+        date: String!
         name:String!
         title:String!
         category:String!
@@ -28,7 +29,6 @@ module.exports = buildSchema(
         brand:String! 
         description:String!
         img:String! 
-   
         price:Float! 
 
     }

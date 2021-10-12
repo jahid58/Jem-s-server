@@ -18,7 +18,7 @@ const graphqlResolvers = {
     const product = new Product({
       title: args.productInput.title,
       name: args.productInput.name,
-      date: new Date(),
+      date: new Date(args.productInput.date),
       size: args.productInput.size,
       category: args.productInput.category,
       price: +args.productInput.price,
