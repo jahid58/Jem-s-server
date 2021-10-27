@@ -1,3 +1,4 @@
+const Order = require("../../models/OrderModel");
 const Product = require("../../models/productModel");
 const { transformProduct } = require("./merge");
 
@@ -13,8 +14,15 @@ const graphqlResolvers = {
       throw err;
     }
   },
+  productById: async (args) => {
+    try {
+      const product = await Product.findOne({ _id: args._id });
+      return product;
+    } catch (err) {
+      throw err;
+    }
+  },
   createProduct: async (args, req) => {
-    console.log(args);
     const product = new Product({
       title: args.productInput.title,
       name: args.productInput.name,
@@ -31,7 +39,20 @@ const graphqlResolvers = {
     });
     try {
       let result = await product.save();
-      console.log(result);
+
+      return result;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  createOrder: async (args) => {
+    const order = new Order({
+      productId: args.orderInput.productId,
+      userName: args.orderInput.userName,
+      email: args.orderInput.email,
+    });
+    try {
+      const result = await order.save();
       return result;
     } catch (err) {
       console.log(err);

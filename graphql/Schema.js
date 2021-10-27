@@ -10,8 +10,8 @@ module.exports = buildSchema(
         category:String!
         rating:Float!
         department:String! 
-        size:String! 
-        color:String!
+        size:[String]! 
+        color:[String]!
         brand:String! 
         description:String!
         img:String! 
@@ -19,6 +19,11 @@ module.exports = buildSchema(
 
 
     }
+  type  Order {
+    productId:[String!]!
+    userName:String!
+    email:String!
+  }
     input ProductInput {
         date: String!
         name:String!
@@ -26,20 +31,27 @@ module.exports = buildSchema(
         rating:Float!
         category:String!
         department:String! 
-        size:String! 
-        color:String!
+        size:[String!]!
+        color:[String!]!
         brand:String! 
         description:String!
         img:String! 
         price:Float! 
 
     }
+input OrderInput {
+productId:[String!]!
+userName:String!
+email:String!
+}
     type RootQuery{
         products:[Product!]!
+        productById(_id:ID!):Product
         
    }
    type RootMutation {
          createProduct(productInput:ProductInput):Product
+         createOrder(orderInput:OrderInput):Order
    }
    schema{
        query:RootQuery

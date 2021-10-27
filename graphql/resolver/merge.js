@@ -55,7 +55,7 @@ const transformProduct = (product) => {
 
   const newPd = {
     ...product._doc,
-    _id: product.id,
+    _id: product._id,
     date: dateToString(product._doc.date),
   };
 
