@@ -2,6 +2,13 @@ const { buildSchema } = require("graphql");
 
 module.exports = buildSchema(
   `
+  type User {
+    userId:ID!
+    userName:String!
+    email:String!
+    password:String!
+ 
+  }
   type Product {
     _id: ID!
       date:String!
@@ -10,8 +17,8 @@ module.exports = buildSchema(
         category:String!
         rating:Float!
         department:String! 
-        size:[String]! 
-        color:[String]!
+        size:[String!]! 
+        color:[String!]!
         brand:String! 
         description:String!
         img:String! 
@@ -19,10 +26,17 @@ module.exports = buildSchema(
 
 
     }
-  type  Order {
-    productId:[String!]!
+  type  Orders {
+    product:ID!
     userName:String!
     email:String!
+  }
+  input UserInput {
+    userId:ID!
+    userName:String!
+    email:String!
+    password:String!
+    
   }
     input ProductInput {
         date: String!
@@ -39,21 +53,26 @@ module.exports = buildSchema(
         price:Float! 
 
     }
-input OrderInput {
-productId:[String!]!
-userName:String!
-email:String!
+ input OrdersInput {
+  product:ID!
+  userName:String!
+  email:String!
+
 }
     type RootQuery{
         products:[Product!]!
         productById(_id:ID!):Product
+        userOrders(email:String!):[Product!]!
+        user:[User!]!
         
    }
    type RootMutation {
          createProduct(productInput:ProductInput):Product
-         createOrder(orderInput:OrderInput):Order
+         createOrders(ordersInput:OrdersInput):Orders
+         createUser(userInput:UserInput):User
+         
    }
-   schema{
+   schema {
        query:RootQuery
        mutation:RootMutation
    }

@@ -1,15 +1,33 @@
-const Order = require("../../models/OrderModel");
+const Orders = require("../../models/OrdersModel");
 const Product = require("../../models/productModel");
+const User = require("../../models/UserModel");
 const { transformProduct } = require("./merge");
 
 const graphqlResolvers = {
+  user: async () => {
+    let result = await User.find({});
+    return result;
+  },
+  userOrders: async (args) => {
+    try {
+      let product = await Orders.find({ email: args.email }).populate(
+        "product"
+      );
+
+      return product.map((pd) => pd.product);
+    } catch (err) {
+      throw wee;
+    }
+  },
   products: async () => {
     try {
       const products = await Product.find();
 
-      return products.map((pd) => {
+      const pds = products.map((pd) => {
         return transformProduct(pd);
       });
+      console.log(pds);
+      return pds;
     } catch (err) {
       throw err;
     }
@@ -27,11 +45,11 @@ const graphqlResolvers = {
       title: args.productInput.title,
       name: args.productInput.name,
       date: new Date(args.productInput.date),
-      size: args.productInput.size,
+      size: args.productInput.size.join().split(","),
       rating: args.productInput.rating,
       category: args.productInput.category,
       price: +args.productInput.price,
-      color: args.productInput.color,
+      color: args.productInput.color.join().split(","),
       description: args.productInput.description,
       img: args.productInput.img,
       department: args.productInput.department,
@@ -45,14 +63,27 @@ const graphqlResolvers = {
       console.log(err);
     }
   },
-  createOrder: async (args) => {
-    const order = new Order({
-      productId: args.orderInput.productId,
-      userName: args.orderInput.userName,
-      email: args.orderInput.email,
+  createOrders: async (args) => {
+    const orders = new Orders({
+      product: args.ordersInput.product,
+      userName: args.ordersInput.userName,
+      email: args.ordersInput.email,
     });
     try {
-      const result = await order.save();
+      const result = await orders.save();
+      return result;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  createUser: async (args) => {
+    const user = new User({
+      userName: args.userInput.userName,
+      email: args.userInput.email,
+      password: args.userInput.password,
+    });
+    try {
+      const result = await user.save();
       return result;
     } catch (err) {
       console.log(err);
