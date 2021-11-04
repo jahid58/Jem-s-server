@@ -16,13 +16,16 @@ module.exports = buildSchema(
         title:String!
         category:String!
         rating:Float!
-        department:String! 
+        gender:String! 
         size:[String!]! 
         color:[String!]!
         brand:String! 
+        material:String!
         description:String!
         img:String! 
         price:Float! 
+        reviews:[Reviews!]!
+        discount:Discount!
 
 
     }
@@ -30,6 +33,16 @@ module.exports = buildSchema(
     product:ID!
     userName:String!
     email:String!
+  }
+  type Reviews{
+    reviewer:String!
+    comment:String!
+    rating:Float!
+  }
+  type Discount{
+    discountMessage:String!
+    discountAmount:Float! 
+    discountPercentage:Float!
   }
   input UserInput {
     userId:ID!
@@ -44,13 +57,16 @@ module.exports = buildSchema(
         title:String!
         rating:Float!
         category:String!
-        department:String! 
+        gender:String! 
         size:[String!]!
         color:[String!]!
         brand:String! 
+        material:String!
         description:String!
         img:String! 
         price:Float! 
+        reviews:[ReviewsInput!]!
+        discount:DiscountInput!
 
     }
  input OrdersInput {
@@ -58,6 +74,16 @@ module.exports = buildSchema(
   userName:String!
   email:String!
 
+}
+input ReviewsInput{
+  reviewer:String!
+  comment:String! 
+  rating:Float! 
+}
+input DiscountInput{
+  discountMessage:String!
+  discountAmount:Float! 
+  discountPercentage:Float!
 }
     type RootQuery{
         products:[Product!]!

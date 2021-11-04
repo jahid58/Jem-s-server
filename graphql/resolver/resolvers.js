@@ -52,8 +52,11 @@ const graphqlResolvers = {
       color: args.productInput.color.join().split(","),
       description: args.productInput.description,
       img: args.productInput.img,
-      department: args.productInput.department,
+      gender: args.productInput.gender,
       brand: args.productInput.brand,
+      material: args.productInput.material,
+      discount: args.productInput.discount,
+      reviews: args.productInput.reviews,
     });
     try {
       let result = await product.save();
