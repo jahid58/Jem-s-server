@@ -29,6 +29,7 @@ module.exports = buildSchema(
 
 
     }
+  
   type  Orders {
     product:ID!
     userName:String!
@@ -96,6 +97,9 @@ input DiscountInput{
          createProduct(productInput:ProductInput):Product
          createOrders(ordersInput:OrdersInput):Orders
          createUser(userInput:UserInput):User
+         UpdateReviews(_id:ID!,reviews:ReviewsInput):Product
+         UpdateDiscount(_id:ID!,discount:DiscountInput):Product
+         UpdateProduct(_id:ID!,productInput:ProductInput):Product
          
    }
    schema {

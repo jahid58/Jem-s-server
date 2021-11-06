@@ -40,6 +40,43 @@ const graphqlResolvers = {
       throw err;
     }
   },
+  UpdateReviews: async (args) => {
+    const filter = { _id: args._id };
+
+    try {
+      const product = await Product.findOne(filter);
+
+      product.reviews.push(args.reviews);
+
+      product.save();
+      return product;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  UpdateDiscount: async (args) => {
+    const filter = { _id: args._id };
+
+    try {
+      const product = await Product.findOne(filter);
+
+      product.reviews.push(args.discount);
+
+      product.save();
+      return product;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  UpdateProduct: async (args, req) => {
+    const filter = { _id: args._id };
+
+    let product = await Product.findOneAndUpdate(filter, {
+      ...args.productInput,
+    });
+
+    return product;
+  },
   createProduct: async (args, req) => {
     const product = new Product({
       title: args.productInput.title,
