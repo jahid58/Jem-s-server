@@ -66,8 +66,8 @@ module.exports = buildSchema(
         description:String!
         img:String! 
         price:Float! 
-        reviews:[ReviewsInput!]!
-        discount:DiscountInput!
+        reviews:[ReviewsInput]
+        discount:DiscountInput
 
     }
  input OrdersInput {

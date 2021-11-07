@@ -59,9 +59,8 @@ const productSchema = new Schema({
     type: Schema.Types.ObjectId,
   },
   discount: {
-    discountMessage: { type: String },
-    discountAmount: { type: Number },
-    discountPercentage: { type: Number },
+    type: Schema.Types.Mixed,
+    required: false,
   },
   reviews: {
     type: [
@@ -77,9 +76,7 @@ const productSchema = new Schema({
         },
       },
     ],
-    // type: Schema.Types.ObjectId,
-    // ref: ReviewsModel,
-    required: true,
+    required: false,
   },
 });
 module.exports = mongoose.model("Product", productSchema);
