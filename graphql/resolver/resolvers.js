@@ -26,7 +26,7 @@ const graphqlResolvers = {
       const pds = products.map((pd) => {
         return transformProduct(pd);
       });
-      console.log(pds);
+
       return pds;
     } catch (err) {
       throw err;
@@ -45,8 +45,11 @@ const graphqlResolvers = {
 
     try {
       const product = await Product.findOne(filter);
-
-      product.reviews.push(args.reviews);
+      if (product.reviews === null) {
+        product.reviews = [args.reviews];
+      } else {
+        product.reviews.push(args.reviews);
+      }
 
       product.save();
       return product;
