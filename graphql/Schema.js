@@ -24,8 +24,8 @@ module.exports = buildSchema(
         description:String!
         img:String! 
         price:Float! 
-        reviews:[Reviews!]!
-        discount:Discount!
+        reviews:[Reviews]
+        discount:Discount
 
 
     }
