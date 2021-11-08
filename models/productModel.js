@@ -33,10 +33,7 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
-  reviews: {
-    type: Schema.Types.Mixed,
-    required: true,
-  },
+
   brand: {
     type: String,
     required: true,
@@ -62,6 +59,10 @@ const productSchema = new Schema({
     type: Schema.Types.Mixed,
     required: false,
   },
+  // additionalInfo:{
+  //   type: Schema.Types.Mixed,
+  //   required: false,
+  // }
   reviews: {
     type: [
       {
@@ -73,6 +74,9 @@ const productSchema = new Schema({
         rating: {
           type: Number,
           required: true,
+        },
+        date: {
+          type: Date,
         },
       },
     ],

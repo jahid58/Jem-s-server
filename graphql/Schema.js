@@ -39,6 +39,7 @@ module.exports = buildSchema(
     reviewer:String!
     comment:String!
     rating:Float!
+    date:String
   }
   type Discount{
     discountMessage:String!
@@ -53,7 +54,7 @@ module.exports = buildSchema(
     
   }
     input ProductInput {
-        date: String!
+       
         name:String!
         title:String!
         rating:Float!

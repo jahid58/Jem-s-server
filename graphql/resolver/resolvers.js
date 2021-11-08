@@ -45,6 +45,9 @@ const graphqlResolvers = {
 
     try {
       const product = await Product.findOne(filter);
+
+      args.reviews.date = await new Date().toDateString();
+      console.log(args.reviews);
       if (product.reviews === null) {
         product.reviews = [args.reviews];
       } else {
@@ -83,7 +86,7 @@ const graphqlResolvers = {
     const product = new Product({
       title: args.productInput.title,
       name: args.productInput.name,
-      date: new Date(args.productInput.date),
+      date: new Date().toDateString(),
       size: args.productInput.size.join().split(","),
       rating: args.productInput.rating,
       category: args.productInput.category,
