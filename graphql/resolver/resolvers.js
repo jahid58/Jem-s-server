@@ -62,8 +62,7 @@ const graphqlResolvers = {
 
     try {
       const product = await Product.findOne(filter);
-
-      product.reviews.push(args.discount);
+      product.discount = args.discount;
 
       product.save();
       return product;
