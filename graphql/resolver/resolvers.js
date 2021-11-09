@@ -46,8 +46,9 @@ const graphqlResolvers = {
     try {
       const product = await Product.findOne(filter);
 
-      args.reviews.date = await new Date().toDateString();
-      console.log(args.reviews);
+      const date = await new Date().toLocaleDateString();
+      args.reviews.date = date;
+      console.log(date);
       if (product.reviews === null) {
         product.reviews = [args.reviews];
       } else {
