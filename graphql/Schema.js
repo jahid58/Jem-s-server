@@ -46,6 +46,11 @@ module.exports = buildSchema(
     discountAmount:Float! 
     discountPercentage:Float!
   }
+  input SearchObjectInput{
+    topic:String!
+    value:String
+  }
+
   input UserInput {
     userId:ID!
     userName:String!
@@ -89,9 +94,10 @@ input DiscountInput{
 }
     type RootQuery{
         products:[Product!]!
-        productById(_id:ID!):Product
+       
         userOrders(email:String!):[Product!]!
         user:[User!]!
+        dynamicSearch(searchObject:SearchObjectInput):[Product]
         
    }
    type RootMutation {

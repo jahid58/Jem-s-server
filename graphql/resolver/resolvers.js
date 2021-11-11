@@ -32,14 +32,6 @@ const graphqlResolvers = {
       throw err;
     }
   },
-  productById: async (args) => {
-    try {
-      const product = await Product.findOne({ _id: args._id });
-      return product;
-    } catch (err) {
-      throw err;
-    }
-  },
   UpdateReviews: async (args) => {
     const filter = { _id: args._id };
 
@@ -134,6 +126,19 @@ const graphqlResolvers = {
     } catch (err) {
       console.log(err);
     }
+  },
+  dynamicSearch: async (args) => {
+    let variable = args.searchObject.topic;
+    let value = args.searchObject.value;
+    if (variable === "price") {
+      value = parseFloat(value);
+    }
+    const query = {};
+    query[variable] = value;
+
+    const product = await Product.find(query);
+
+    return product;
   },
 };
 module.exports = graphqlResolvers;
