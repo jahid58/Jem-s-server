@@ -4,10 +4,13 @@ const User = require("../../models/UserModel");
 const { transformProduct } = require("./merge");
 
 const graphqlResolvers = {
+  // finding all user
   user: async () => {
     let result = await User.find({});
     return result;
   },
+
+  // single user orders
   userOrders: async (args) => {
     try {
       let product = await Orders.find({ email: args.email }).populate(
@@ -19,6 +22,8 @@ const graphqlResolvers = {
       throw wee;
     }
   },
+
+  // finding all products
   products: async () => {
     try {
       const products = await Product.find();
@@ -30,6 +35,15 @@ const graphqlResolvers = {
       return pds;
     } catch (err) {
       throw err;
+    }
+  },
+  deleteProduct: async (args) => {
+    const filter = { _id: args._id };
+    try {
+      const count = await Product.deleteOne(filter);
+      return count.deletedCount;
+    } catch (err) {
+      console.log(err);
     }
   },
   UpdateReviews: async (args) => {
@@ -66,6 +80,7 @@ const graphqlResolvers = {
       console.log(err);
     }
   },
+  // updating single product
   UpdateProduct: async (args, req) => {
     const filter = { _id: args._id };
 
@@ -75,6 +90,9 @@ const graphqlResolvers = {
 
     return product;
   },
+
+  // creating single product
+
   createProduct: async (args, req) => {
     const product = new Product({
       title: args.productInput.title,
@@ -101,6 +119,7 @@ const graphqlResolvers = {
       console.log(err);
     }
   },
+
   createOrders: async (args) => {
     const orders = new Orders({
       product: args.ordersInput.product,
@@ -114,6 +133,7 @@ const graphqlResolvers = {
       console.log(err);
     }
   },
+
   createUser: async (args) => {
     const user = new User({
       userName: args.userInput.userName,
@@ -127,6 +147,8 @@ const graphqlResolvers = {
       console.log(err);
     }
   },
+
+  // searching product with any property and value
   dynamicSearch: async (args) => {
     let variable = args.searchObject.topic;
     let value = args.searchObject.value;

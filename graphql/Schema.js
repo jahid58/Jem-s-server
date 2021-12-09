@@ -94,7 +94,6 @@ input DiscountInput{
 }
     type RootQuery{
         products:[Product!]!
-       
         userOrders(email:String!):[Product!]!
         user:[User!]!
         dynamicSearch(searchObject:SearchObjectInput):[Product]
@@ -107,6 +106,7 @@ input DiscountInput{
          UpdateReviews(_id:ID!,reviews:ReviewsInput):Product
          UpdateDiscount(_id:ID!,discount:DiscountInput):Product
          UpdateProduct(_id:ID!,productInput:ProductInput):Product
+        deleteProduct(_id:ID!):Float!
          
    }
    schema {

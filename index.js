@@ -28,8 +28,8 @@ const DATABASE_URL = ` mongodb+srv://${process.env.DB_USER}:${process.env.DB_PAS
 
 mongoose
   .connect(DATABASE_URL)
-  .then(() => {
-    console.log("module.exports");
+  .then((data) => {
+    console.log("database connection successful");
   })
   .catch((err) => {
     console.log(err);
