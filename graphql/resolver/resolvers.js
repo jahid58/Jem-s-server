@@ -155,11 +155,13 @@ const graphqlResolvers = {
     if (variable === "price") {
       value = parseFloat(value);
     }
+
+    value = new RegExp(value, "i");
+
     const query = {};
     query[variable] = value;
 
     const product = await Product.find(query);
-
     return product;
   },
 };
