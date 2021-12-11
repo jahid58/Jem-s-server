@@ -37,6 +37,18 @@ const graphqlResolvers = {
       throw err;
     }
   },
+  productsByIds: async (args) => {
+    const ids = args.idsInput.ids;
+
+    try {
+      const records = await Product.find({ _id: { $in: ids } });
+      console.log(records);
+
+      return records;
+    } catch (err) {
+      console.log(err);
+    }
+  },
   deleteProduct: async (args) => {
     const filter = { _id: args._id };
     try {
@@ -73,7 +85,6 @@ const graphqlResolvers = {
     try {
       const product = await Product.findOne(filter);
       product.discount = args.discount;
-
       product.save();
       return product;
     } catch (err) {

@@ -92,11 +92,15 @@ input DiscountInput{
   discountAmount:Float! 
   discountPercentage:Float!
 }
+input IdsInput {
+  ids:[ID]
+}
     type RootQuery{
         products:[Product!]!
         userOrders(email:String!):[Product!]!
         user:[User!]!
         dynamicSearch(searchObject:SearchObjectInput):[Product]
+        productsByIds(idsInput:IdsInput):[Product]
         
    }
    type RootMutation {
