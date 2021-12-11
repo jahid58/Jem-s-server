@@ -93,7 +93,7 @@ input DiscountInput{
   discountPercentage:Float!
 }
 input IdsInput {
-  ids:[ID]
+  ids:String
 }
     type RootQuery{
         products:[Product!]!
