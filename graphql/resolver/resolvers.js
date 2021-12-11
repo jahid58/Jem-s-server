@@ -38,8 +38,8 @@ const graphqlResolvers = {
     }
   },
   productsByIds: async (args) => {
-    const ids = args.idsInput.ids;
-
+    const ids = args.idsInput.ids.join().split(",");
+    console.log(ids);
     try {
       const records = await Product.find({ _id: { $in: ids } });
       console.log(records);
