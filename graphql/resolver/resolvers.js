@@ -42,7 +42,7 @@ const graphqlResolvers = {
 
     try {
       const records = await Product.find({ _id: { $in: ids } });
-      console.log(records);
+
       return records;
     } catch (err) {
       console.log(err);
@@ -164,9 +164,11 @@ const graphqlResolvers = {
     let value = args.searchObject.value;
     if (variable === "price") {
       value = parseFloat(value);
+    } else if (variable === "_id") {
+      value = value;
+    } else {
+      value = new RegExp(value, "i");
     }
-
-    value = new RegExp(value, "i");
 
     const query = {};
     query[variable] = value;
