@@ -133,7 +133,7 @@ const graphqlResolvers = {
   createOrders: async (args) => {
     console.log(args);
     const orders = new Orders({
-      products: args.ordersInput.products,
+      products: args.ordersInput.products.join().split(","),
       name: args.ordersInput.name,
       email: args.ordersInput.email,
     });

@@ -15,7 +15,7 @@ const userSchema = Schema({
     required: true,
   },
   products: {
-    type: Schema.Types.Mixed,
+    type: [String],
     ref: Product,
   },
 });
