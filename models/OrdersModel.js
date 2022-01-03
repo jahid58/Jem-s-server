@@ -5,7 +5,7 @@ const userSchema = Schema({
   userId: {
     type: Schema.Types.ObjectId,
   },
-  userName: {
+  name: {
     type: String,
     required: true,
   },
@@ -14,7 +14,7 @@ const userSchema = Schema({
     required: true,
   },
   product: {
-    type: mongoose.Types.ObjectId,
+    type: Schema.Types.Mixed,
     ref: Product,
   },
 });

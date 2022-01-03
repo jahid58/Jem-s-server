@@ -19,7 +19,7 @@ const graphqlResolvers = {
 
       return product.map((pd) => pd.product);
     } catch (err) {
-      throw wee;
+      throw err;
     }
   },
 
@@ -132,8 +132,8 @@ const graphqlResolvers = {
 
   createOrders: async (args) => {
     const orders = new Orders({
-      product: args.ordersInput.product,
-      userName: args.ordersInput.userName,
+      products: args.ordersInput.products,
+      name: args.ordersInput.name,
       email: args.ordersInput.email,
     });
     try {

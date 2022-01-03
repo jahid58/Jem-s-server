@@ -31,8 +31,8 @@ module.exports = buildSchema(
     }
   
   type  Orders {
-    product:ID!
-    userName:String!
+    products:[String]
+    name:String!
     email:String!
   }
   type Reviews{
@@ -42,9 +42,9 @@ module.exports = buildSchema(
     date:String
   }
   type Discount{
-    discountMessage:String!
-    discountAmount:Float! 
-    discountPercentage:Float!
+    discountMessage:String
+    discountAmount:Float
+    discountPercentage:Float
   }
   input SearchObjectInput{
     topic:String!
@@ -59,7 +59,6 @@ module.exports = buildSchema(
     
   }
     input ProductInput {
-       
         name:String!
         title:String!
         rating:Float!
@@ -77,10 +76,9 @@ module.exports = buildSchema(
 
     }
  input OrdersInput {
-  product:ID!
-  userName:String!
+  products:[String]
+  name:String!
   email:String!
-
 }
 input ReviewsInput{
   reviewer:String!
@@ -88,9 +86,9 @@ input ReviewsInput{
   rating:Float! 
 }
 input DiscountInput{
-  discountMessage:String!
-  discountAmount:Float! 
-  discountPercentage:Float!
+  discountMessage:String
+  discountAmount:Float
+  discountPercentage:Float
 }
 input IdsInput {
   ids:String
