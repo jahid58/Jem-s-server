@@ -13,7 +13,7 @@ const userSchema = Schema({
     type: String,
     required: true,
   },
-  product: {
+  products: {
     type: Schema.Types.Mixed,
     ref: Product,
   },

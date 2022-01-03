@@ -131,11 +131,13 @@ const graphqlResolvers = {
   },
 
   createOrders: async (args) => {
+    console.log(args);
     const orders = new Orders({
       products: args.ordersInput.products,
       name: args.ordersInput.name,
       email: args.ordersInput.email,
     });
+    console.log(orders);
     try {
       const result = await orders.save();
       return result;
