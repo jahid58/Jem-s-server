@@ -32,8 +32,9 @@ module.exports = buildSchema(
   
   type  Orders {
     products:[String]
-    name:String!
-    email:String!
+    name:String
+    email:String
+    paymentId:String
   }
   type Reviews{
     reviewer:String!
@@ -77,8 +78,9 @@ module.exports = buildSchema(
     }
  input OrdersInput {
   products:[String]
-  name:String!
-  email:String!
+  name:String
+  email:String
+  paymentId:String
 }
 input ReviewsInput{
   reviewer:String!

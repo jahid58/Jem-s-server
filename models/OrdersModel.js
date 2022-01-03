@@ -5,6 +5,7 @@ const userSchema = Schema({
   userId: {
     type: Schema.Types.ObjectId,
   },
+  paymentId: String,
   name: {
     type: String,
     required: true,
