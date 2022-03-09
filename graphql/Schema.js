@@ -17,8 +17,8 @@ module.exports = buildSchema(
         category:String!
         rating:Float!
         gender:String! 
-        size:[String!]! 
-        color:[String!]!
+        size:String! 
+        color:String!
         brand:String! 
         material:String!
         description:String!
