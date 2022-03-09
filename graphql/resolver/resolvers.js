@@ -108,11 +108,11 @@ const graphqlResolvers = {
       title: args.productInput.title,
       name: args.productInput.name,
       date: new Date().toDateString(),
-      size: args.productInput.size.join().split(","),
+      size: args.productInput.size,
       rating: args.productInput.rating,
       category: args.productInput.category,
       price: +args.productInput.price,
-      color: args.productInput.color.join().split(","),
+      color: args.productInput.color,
       description: args.productInput.description,
       img: args.productInput.img,
       gender: args.productInput.gender,
@@ -123,7 +123,6 @@ const graphqlResolvers = {
     });
     try {
       let result = await product.save();
-
       return result;
     } catch (err) {
       console.log(err);
